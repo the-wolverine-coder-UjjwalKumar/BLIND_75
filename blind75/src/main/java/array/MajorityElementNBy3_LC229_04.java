@@ -15,7 +15,7 @@ public class MajorityElementNBy3_LC229_04 {
         int[] ans2 = getMajorityElementBetterApp(arr,n);
         System.out.println(Arrays.toString(ans2));
 
-        int[] ans3 = getMarjorityElementByMooresAlgo(arr,n);
+        int[] ans3 = getMajorityElementByBoyerMooreAlgo(arr,n);
         System.out.println(Arrays.toString(ans3));
     }
 
@@ -75,7 +75,7 @@ public class MajorityElementNBy3_LC229_04 {
     }
 
     // Optimal Approach
-    private static int[] getMarjorityElementByMooresAlgo(int[] arr, int n) {
+    private static int[] getMajorityElementByBoyerMooreAlgo(int[] arr, int n) {
          int ele1 = -1;
          int ele2 = -1;
          int cnt1 = 0;
