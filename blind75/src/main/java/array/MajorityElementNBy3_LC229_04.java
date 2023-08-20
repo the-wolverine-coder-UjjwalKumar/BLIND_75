@@ -74,7 +74,7 @@ public class MajorityElementNBy3_LC229_04 {
 
     }
 
-    // Optimal Approach
+    // Optimal Approach : TC: O(N) & SC : O(1)
     private static int[] getMajorityElementByBoyerMooreAlgo(int[] arr, int n) {
          int ele1 = -1;
          int ele2 = -1;
