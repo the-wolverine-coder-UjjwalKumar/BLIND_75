@@ -1,4 +1,4 @@
-package array;
+package algorithm;
 
 public class ExcelSheetTitle_LC168 {
     public static void main(String[] args) {
