@@ -33,7 +33,7 @@ public class ReorganizeString_LC767 {
             maxHeap.add(record);
         }
 
-        // Now
+        // Now processing current char and block them for next interval.
         Pair blocked;
         Pair currItem;
 
