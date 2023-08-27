@@ -1,4 +1,4 @@
-package array;
+package blind_75_questions.array;
 
 import java.util.Arrays;
 import java.util.HashMap;

@@ -1,4 +1,4 @@
-package array;
+package striver_atoz_dsa.array;
 
 import java.util.Arrays;
 import java.util.HashMap;

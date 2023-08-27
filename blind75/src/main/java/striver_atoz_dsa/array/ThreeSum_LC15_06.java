@@ -1,4 +1,4 @@
-package array;
+package striver_atoz_dsa.array;
 
 import java.util.*;
 
@@ -10,7 +10,7 @@ public class ThreeSum_LC15_06 {
         System.out.println(ans.toString());
         List<List<Integer>> ansBetter = threeSumBetter(arr, arr.length);
         System.out.println(ansBetter.toString());
-        List<List<Integer>> ans1 = threeSum(arr2, arr2.length);
+        List<List<Integer>> ans1 = threeSumOptimal(arr, arr.length);
         System.out.println(ans1.toString());
     }
 
@@ -51,6 +51,37 @@ public class ThreeSum_LC15_06 {
                 set.add(arr[j]);
 
             }
+        }
+
+        return ans.stream().toList();
+    }
+
+    // Optimal approach : TC O(log(n) + n3) & SC : O(n)
+    private static List<List<Integer>> threeSumOptimal(int[] arr, int n) {
+        Set<List<Integer>> ans = new HashSet<>();
+        Arrays.sort(arr);
+        int i =  0;
+        while (i < n-2) {
+            int j = i+1, k = n-1;
+            while (j < k) {
+                int sum = arr[i] + arr[j] + arr[k];
+
+                if (sum < 0) {
+                    j++;
+                } else if (sum > 0) {
+                    k--;
+                } else {
+                    List<Integer> tAns = new ArrayList<>(List.of(arr[i],arr[j],arr[k]));
+                    ans.add(tAns);
+                    j++;
+                    k--;
+                    //skip the duplicates:
+                    while (j < k && arr[j] == arr[j - 1]) j++;
+                    while (j < k && arr[k] == arr[k + 1]) k--;
+                }
+            }
+            i++;
+            while (i < n-2 && arr[i] == arr[i-1]) i++;
         }
 
         return ans.stream().toList();

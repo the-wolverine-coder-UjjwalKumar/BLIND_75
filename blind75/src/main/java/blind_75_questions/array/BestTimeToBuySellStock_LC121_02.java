@@ -1,4 +1,4 @@
-package array;
+package blind_75_questions.array;
 
 public class BestTimeToBuySellStock_LC121_02 {
     public static void main(String[] args) {
