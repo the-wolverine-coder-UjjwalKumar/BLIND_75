@@ -1,4 +1,4 @@
-package striver_atoz_dsa.array;
+package blind_75_questions.array;
 
 import java.util.*;
 
