@@ -56,7 +56,7 @@ public class ThreeSum_LC15_06 {
         return ans.stream().toList();
     }
 
-    // Optimal approach : TC O(log(n) + n3) & SC : O(n)
+    // Optimal approach : TC O(nlog(n) + n^2) & SC : O(n)
     private static List<List<Integer>> threeSumOptimal(int[] arr, int n) {
         Set<List<Integer>> ans = new HashSet<>();
         Arrays.sort(arr);
