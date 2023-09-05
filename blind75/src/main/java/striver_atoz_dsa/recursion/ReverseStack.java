@@ -1,4 +1,4 @@
-package algorithm;
+package striver_atoz_dsa.recursion;
 
 import java.util.Stack;
 
