@@ -1,4 +1,4 @@
-package algorithm;
+package striver_atoz_dsa.recursion;
 
 public class ImplementPowerX {
     public static void main(String[] args) {

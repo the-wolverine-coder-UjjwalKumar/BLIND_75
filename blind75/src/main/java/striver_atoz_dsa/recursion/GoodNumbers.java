@@ -1,4 +1,4 @@
-package algorithm;
+package striver_atoz_dsa.recursion;
 
 public class GoodNumbers {
     static int mod = (int) 10e9+7;
