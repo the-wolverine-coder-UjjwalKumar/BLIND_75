@@ -1,4 +1,4 @@
-package algorithm;
+package striver_atoz_dsa.recursion;
 
 public class StringSTOI_LC8 {
     public static void main(String[] args) {
