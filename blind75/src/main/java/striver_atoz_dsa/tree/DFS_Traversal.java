@@ -96,7 +96,7 @@ public class DFS_Traversal {
     }
 
     private static void printInOrderIterative(Node root) {
-        if (root == null)
+        if (root == null )
             return;
 
         // Approach: initialize the stack with root
