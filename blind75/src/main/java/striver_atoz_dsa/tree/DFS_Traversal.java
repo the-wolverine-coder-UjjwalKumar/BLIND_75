@@ -38,8 +38,15 @@ public class DFS_Traversal {
         System.out.print("In-Order :: ");
         printInOrder(root);
         System.out.println();
+        System.out.print("In-Order Iterative :: ");
+        printInOrderIterative(root);
+        System.out.println();
         System.out.print("Post-Order :: ");
         printPostOrder(root);
+        System.out.println();
+        System.out.print("Post-Order Iterative :: ");
+        printPostOrderIterativeTwoStack(root);
+        System.out.println();
     }
 
     private static void printPostOrder(Node root) {
@@ -108,7 +115,8 @@ public class DFS_Traversal {
         Node node = root;
         while (true) {
 
-            if (node.left!=null) {
+
+            if (node != null && node.left!=null) {
                 stack.push(node);
                 node = node.left;
             } else {
@@ -119,7 +127,37 @@ public class DFS_Traversal {
                 System.out.print(node.data+" ");
                 node = node.right;
             }
+        }
 
+
+    }
+
+    public static void printPostOrderIterativeTwoStack(Node root) {
+        if (root == null)
+            return;
+
+        Stack<Node> stack1 = new Stack<>();
+        Stack<Node> stack2 = new Stack<>();
+
+        stack1.push(root);
+        while (!stack1.isEmpty()) {
+            Node node = stack1.pop();
+
+            if (node != null) {
+                stack2.push(node);
+
+                if (node.left!=null)
+                    stack1.push(node.left);
+
+                if (node.right!=null)
+                    stack1.push(node.right);
+            }
+
+        }
+
+        while (!stack2.isEmpty()) {
+            Node node = stack2.pop();
+            System.out.print(node.data+" ");
         }
     }
 }
