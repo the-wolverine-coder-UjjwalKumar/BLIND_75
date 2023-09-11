@@ -47,6 +47,9 @@ public class DFS_Traversal {
         System.out.print("Post-Order Iterative :: ");
         printPostOrderIterativeTwoStack(root);
         System.out.println();
+        System.out.print("Post-Order Iterative using one sack :: ");
+        printPostOrderIterativeOneStack(root);
+        System.out.println();
     }
 
     private static void printPostOrder(Node root) {
@@ -158,6 +161,36 @@ public class DFS_Traversal {
         while (!stack2.isEmpty()) {
             Node node = stack2.pop();
             System.out.print(node.data+" ");
+        }
+    }
+
+    public static void printPostOrderIterativeOneStack(Node root) {
+        if (root == null)
+            return;
+
+        Stack<Node> stack = new Stack<>();
+
+        Node curr = root;
+        Node temp;
+        while (curr != null || !stack.isEmpty()) {
+
+            if (curr != null) {
+                stack.push(curr);
+                curr = curr.left;
+            } else {
+                temp = stack.peek().right;
+                if (temp == null) {
+                    // print the post order
+                    temp = stack.pop();
+                    System.out.print(temp.data+" ");
+                    while (!stack.isEmpty() && temp == stack.peek().right) {
+                        temp = stack.pop();
+                        System.out.print(temp.data+" ");
+                    }
+                } else {
+                    curr = temp;
+                }
+            }
         }
     }
 }
