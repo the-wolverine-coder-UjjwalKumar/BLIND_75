@@ -1,5 +1,8 @@
 package striver_atoz_dsa.tree;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Stack;
 
 public class DFS_Traversal {
@@ -21,6 +24,7 @@ public class DFS_Traversal {
 
         return root;
     }
+
     public static void main(String[] args) {
 
         Node root = getTree();
@@ -50,7 +54,11 @@ public class DFS_Traversal {
         System.out.print("Post-Order Iterative using one sack :: ");
         printPostOrderIterativeOneStack(root);
         System.out.println();
+        System.out.println("Pre/Inorder/Post-Order in single go :: ");
+        printPreOrderInOrderPostOrder(root);
+        System.out.println();
     }
+
 
     private static void printPostOrder(Node root) {
         if (root == null)
@@ -58,7 +66,7 @@ public class DFS_Traversal {
 
         printPostOrder(root.left);
         printPostOrder(root.right);
-        System.out.print(root.data+" ");
+        System.out.print(root.data + " ");
     }
 
     private static void printInOrder(Node root) {
@@ -66,7 +74,7 @@ public class DFS_Traversal {
             return;
 
         printInOrder(root.left);
-        System.out.print(root.data+" ");
+        System.out.print(root.data + " ");
         printInOrder(root.right);
     }
 
@@ -77,7 +85,7 @@ public class DFS_Traversal {
         }
 
         // move to extreme left subtree
-        System.out.print(root.data+" ");
+        System.out.print(root.data + " ");
         printPreOrder(root.left);
         printPreOrder(root.right);
     }
@@ -95,7 +103,7 @@ public class DFS_Traversal {
         stack.add(root);
         while (!stack.isEmpty()) {
             Node currentNode = stack.pop();
-            System.out.print(currentNode.data+" ");
+            System.out.print(currentNode.data + " ");
 
             if (currentNode.right != null)
                 stack.push(currentNode.right);
@@ -106,7 +114,7 @@ public class DFS_Traversal {
     }
 
     private static void printInOrderIterative(Node root) {
-        if (root == null )
+        if (root == null)
             return;
 
         // Approach: initialize the stack with root
@@ -119,7 +127,7 @@ public class DFS_Traversal {
         while (true) {
 
 
-            if (node != null && node.left!=null) {
+            if (node != null && node.left != null) {
                 stack.push(node);
                 node = node.left;
             } else {
@@ -127,7 +135,7 @@ public class DFS_Traversal {
                     break;
 
                 node = stack.pop();
-                System.out.print(node.data+" ");
+                System.out.print(node.data + " ");
                 node = node.right;
             }
         }
@@ -149,10 +157,10 @@ public class DFS_Traversal {
             if (node != null) {
                 stack2.push(node);
 
-                if (node.left!=null)
+                if (node.left != null)
                     stack1.push(node.left);
 
-                if (node.right!=null)
+                if (node.right != null)
                     stack1.push(node.right);
             }
 
@@ -160,7 +168,7 @@ public class DFS_Traversal {
 
         while (!stack2.isEmpty()) {
             Node node = stack2.pop();
-            System.out.print(node.data+" ");
+            System.out.print(node.data + " ");
         }
     }
 
@@ -182,15 +190,81 @@ public class DFS_Traversal {
                 if (temp == null) {
                     // print the post order
                     temp = stack.pop();
-                    System.out.print(temp.data+" ");
+                    System.out.print(temp.data + " ");
                     while (!stack.isEmpty() && temp == stack.peek().right) {
                         temp = stack.pop();
-                        System.out.print(temp.data+" ");
+                        System.out.print(temp.data + " ");
                     }
                 } else {
                     curr = temp;
                 }
             }
         }
+    }
+
+    private static void printPreOrderInOrderPostOrder(Node root) {
+        List<Integer> preOrder = new LinkedList<>();
+        List<Integer> inOrder = new LinkedList<>();
+        List<Integer> postOrder = new LinkedList<>();
+
+        Stack<Pair> stack = new Stack<>();
+        stack.push(new Pair(root, 1));
+
+        while (!stack.isEmpty()) {
+            Pair topEle = stack.pop();
+            if (topEle.cnt == 1) {
+                preOrder.add(topEle.getNode().data);
+
+                topEle.setCount(2);
+                stack.push(topEle);
+
+                if (topEle.getNode().left != null) {
+                    stack.push(new Pair(topEle.getNode().left, 1));
+                }
+            } else if (topEle.cnt == 2) {
+                inOrder.add(topEle.getNode().data);
+
+                topEle.setCount(3);
+                stack.push(topEle);
+
+                if (topEle.getNode().right != null) {
+                    stack.push(new Pair(topEle.getNode().right, 1));
+                }
+            } else if (topEle.cnt == 3) {
+                postOrder.add(topEle.getNode().data);
+            }
+        }
+
+        System.out.println("Pre-Order :: "+preOrder);
+        System.out.println("In-Order :: "+inOrder);
+        System.out.println("post-Order :: "+postOrder);
+
+    }
+
+    static class Pair {
+        Node node;
+        int cnt;
+
+        public Pair(Node node, int cnt) {
+            this.node = node;
+            this.cnt = cnt;
+        }
+
+        public void setNode(Node node) {
+            this.node = node;
+        }
+
+        public void setCount(int count) {
+            this.cnt = count;
+        }
+
+        public Node getNode() {
+            return this.node;
+        }
+
+        public int getCount() {
+            return this.cnt;
+        }
+
     }
 }
