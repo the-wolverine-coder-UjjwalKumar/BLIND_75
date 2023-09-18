@@ -15,8 +15,10 @@ public class ClimbingStairs_LC70 {
         int ans1 = getNumOfWaysToClimbMemoized(n, dp);
         System.out.println(ans1);
 
-        int ans2 = getNumOfWaysToClimbMemoizedTwo(n, dp);
-        System.out.println(ans2);
+        int[] dp1 = new int[n+1];
+        Arrays.fill(dp1, -1);
+        dp1[0] = 1;
+        dp1[1] = 1;
 
         int ans3 = getNumOfWaysToClimbTopDown(n);
         System.out.println(ans3);
@@ -42,16 +44,6 @@ public class ClimbingStairs_LC70 {
         return dp[n];
     }
 
-    private static int getNumOfWaysToClimbMemoizedTwo(int n, int[] dp) {
-        if (n == 0 || n == 1) return dp[n];
-
-        if (dp[n]!= -1) return dp[n];
-
-        int ans = dp[n-1] + dp[n-2];
-        dp[n] = ans;
-        return dp[n];
-    }
-
     // DP top-down
     private static int getNumOfWaysToClimbTopDown(int n) {
         int[] dp = new int[n+1];
@@ -65,8 +57,5 @@ public class ClimbingStairs_LC70 {
         return dp[n];
 
     }
-
-
-
 
 }
