@@ -22,6 +22,14 @@ public class DFS_Traversal {
         root.right.right.left = new Node(9);
         root.right.right.right = new Node(10);
 
+        //       1
+        //      / \
+        //    2     3
+        //   / \   / \
+        //  4   5 7   8
+        //     /     / \
+        //     6    9  10
+
         return root;
     }
 
