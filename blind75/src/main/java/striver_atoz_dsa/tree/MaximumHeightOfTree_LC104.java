@@ -9,13 +9,13 @@ public class MaximumHeightOfTree_LC104 {
         //  4   5 7   8
         //     /     / \
         //     6    9  10
-        Node root = DFS_Traversal.getTree();
+        TreeNode root = DFS_Traversal.getTree();
 
         int height = getHeight(root);
         System.out.println(height);
     }
 
-    private static int getHeight(Node root) {
+    private static int getHeight(TreeNode root) {
         if (root == null) return 0;
 
        return 1 + Math.max(getHeight(root.left), getHeight(root.right));
