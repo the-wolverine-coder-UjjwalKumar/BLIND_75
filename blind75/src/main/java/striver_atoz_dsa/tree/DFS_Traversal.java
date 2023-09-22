@@ -1,26 +1,25 @@
 package striver_atoz_dsa.tree;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Stack;
 
 public class DFS_Traversal {
-    public static Node getTree() {
-        Node root = new Node(1);
-        root.left = new Node(2);
-        root.right = new Node(3);
+    public static TreeNode getTree() {
+        TreeNode root = new TreeNode(1);
+        root.left = new TreeNode(2);
+        root.right = new TreeNode(3);
 
-        root.left.left = new Node(4);
-        root.left.right = new Node(5);
+        root.left.left = new TreeNode(4);
+        root.left.right = new TreeNode(5);
 
-        root.right.left = new Node(7);
-        root.right.right = new Node(8);
+        root.right.left = new TreeNode(7);
+        root.right.right = new TreeNode(8);
 
-        root.left.right.left = new Node(6);
+        root.left.right.left = new TreeNode(6);
 
-        root.right.right.left = new Node(9);
-        root.right.right.right = new Node(10);
+        root.right.right.left = new TreeNode(9);
+        root.right.right.right = new TreeNode(10);
 
         //       1
         //      / \
@@ -35,7 +34,7 @@ public class DFS_Traversal {
 
     public static void main(String[] args) {
 
-        Node root = getTree();
+        TreeNode root = getTree();
         // Print DFS traversal
         // 1. Pre-Order  (Root Left Right)
         // 2. In-Order   (Left Root Right)
@@ -68,38 +67,38 @@ public class DFS_Traversal {
     }
 
 
-    private static void printPostOrder(Node root) {
+    private static void printPostOrder(TreeNode root) {
         if (root == null)
             return;
 
         printPostOrder(root.left);
         printPostOrder(root.right);
-        System.out.print(root.data + " ");
+        System.out.print(root.val + " ");
     }
 
-    private static void printInOrder(Node root) {
+    private static void printInOrder(TreeNode root) {
         if (root == null)
             return;
 
         printInOrder(root.left);
-        System.out.print(root.data + " ");
+        System.out.print(root.val + " ");
         printInOrder(root.right);
     }
 
-    private static void printPreOrder(Node root) {
+    private static void printPreOrder(TreeNode root) {
 
         if (root == null) {
             return;
         }
 
         // move to extreme left subtree
-        System.out.print(root.data + " ");
+        System.out.print(root.val + " ");
         printPreOrder(root.left);
         printPreOrder(root.right);
     }
 
-    private static void printPreorderIterative(Node root) {
-        Stack<Node> stack = new Stack<>();
+    private static void printPreorderIterative(TreeNode root) {
+        Stack<TreeNode> stack = new Stack<>();
 
         // initial setup : put the root into stack
         // take out stack top & print it
@@ -110,84 +109,84 @@ public class DFS_Traversal {
 
         stack.add(root);
         while (!stack.isEmpty()) {
-            Node currentNode = stack.pop();
-            System.out.print(currentNode.data + " ");
+            TreeNode currentTreeNode = stack.pop();
+            System.out.print(currentTreeNode.val + " ");
 
-            if (currentNode.right != null)
-                stack.push(currentNode.right);
+            if (currentTreeNode.right != null)
+                stack.push(currentTreeNode.right);
 
-            if (currentNode.left != null)
-                stack.push(currentNode.left);
+            if (currentTreeNode.left != null)
+                stack.push(currentTreeNode.left);
         }
     }
 
-    private static void printInOrderIterative(Node root) {
+    private static void printInOrderIterative(TreeNode root) {
         if (root == null)
             return;
 
         // Approach: initialize the stack with root
         // now explore the top element and if its left exists put it into the stack
         // once left existence is null, take out the top print it out and then put the right
-        Stack<Node> stack = new Stack<>();
+        Stack<TreeNode> stack = new Stack<>();
 
         stack.push(root);
-        Node node = root;
+        TreeNode treeNode = root;
         while (true) {
 
 
-            if (node != null && node.left != null) {
-                stack.push(node);
-                node = node.left;
+            if (treeNode != null && treeNode.left != null) {
+                stack.push(treeNode);
+                treeNode = treeNode.left;
             } else {
                 if (stack.isEmpty())
                     break;
 
-                node = stack.pop();
-                System.out.print(node.data + " ");
-                node = node.right;
+                treeNode = stack.pop();
+                System.out.print(treeNode.val + " ");
+                treeNode = treeNode.right;
             }
         }
 
 
     }
 
-    public static void printPostOrderIterativeTwoStack(Node root) {
+    public static void printPostOrderIterativeTwoStack(TreeNode root) {
         if (root == null)
             return;
 
-        Stack<Node> stack1 = new Stack<>();
-        Stack<Node> stack2 = new Stack<>();
+        Stack<TreeNode> stack1 = new Stack<>();
+        Stack<TreeNode> stack2 = new Stack<>();
 
         stack1.push(root);
         while (!stack1.isEmpty()) {
-            Node node = stack1.pop();
+            TreeNode treeNode = stack1.pop();
 
-            if (node != null) {
-                stack2.push(node);
+            if (treeNode != null) {
+                stack2.push(treeNode);
 
-                if (node.left != null)
-                    stack1.push(node.left);
+                if (treeNode.left != null)
+                    stack1.push(treeNode.left);
 
-                if (node.right != null)
-                    stack1.push(node.right);
+                if (treeNode.right != null)
+                    stack1.push(treeNode.right);
             }
 
         }
 
         while (!stack2.isEmpty()) {
-            Node node = stack2.pop();
-            System.out.print(node.data + " ");
+            TreeNode treeNode = stack2.pop();
+            System.out.print(treeNode.val + " ");
         }
     }
 
-    public static void printPostOrderIterativeOneStack(Node root) {
+    public static void printPostOrderIterativeOneStack(TreeNode root) {
         if (root == null)
             return;
 
-        Stack<Node> stack = new Stack<>();
+        Stack<TreeNode> stack = new Stack<>();
 
-        Node curr = root;
-        Node temp;
+        TreeNode curr = root;
+        TreeNode temp;
         while (curr != null || !stack.isEmpty()) {
 
             if (curr != null) {
@@ -198,10 +197,10 @@ public class DFS_Traversal {
                 if (temp == null) {
                     // print the post order
                     temp = stack.pop();
-                    System.out.print(temp.data + " ");
+                    System.out.print(temp.val + " ");
                     while (!stack.isEmpty() && temp == stack.peek().right) {
                         temp = stack.pop();
-                        System.out.print(temp.data + " ");
+                        System.out.print(temp.val + " ");
                     }
                 } else {
                     curr = temp;
@@ -210,7 +209,7 @@ public class DFS_Traversal {
         }
     }
 
-    private static void printPreOrderInOrderPostOrder(Node root) {
+    private static void printPreOrderInOrderPostOrder(TreeNode root) {
         List<Integer> preOrder = new LinkedList<>();
         List<Integer> inOrder = new LinkedList<>();
         List<Integer> postOrder = new LinkedList<>();
@@ -221,7 +220,7 @@ public class DFS_Traversal {
         while (!stack.isEmpty()) {
             Pair topEle = stack.pop();
             if (topEle.cnt == 1) {
-                preOrder.add(topEle.getNode().data);
+                preOrder.add(topEle.getNode().val);
 
                 topEle.setCount(2);
                 stack.push(topEle);
@@ -230,7 +229,7 @@ public class DFS_Traversal {
                     stack.push(new Pair(topEle.getNode().left, 1));
                 }
             } else if (topEle.cnt == 2) {
-                inOrder.add(topEle.getNode().data);
+                inOrder.add(topEle.getNode().val);
 
                 topEle.setCount(3);
                 stack.push(topEle);
@@ -239,7 +238,7 @@ public class DFS_Traversal {
                     stack.push(new Pair(topEle.getNode().right, 1));
                 }
             } else if (topEle.cnt == 3) {
-                postOrder.add(topEle.getNode().data);
+                postOrder.add(topEle.getNode().val);
             }
         }
 
@@ -250,24 +249,24 @@ public class DFS_Traversal {
     }
 
     static class Pair {
-        Node node;
+        TreeNode treeNode;
         int cnt;
 
-        public Pair(Node node, int cnt) {
-            this.node = node;
+        public Pair(TreeNode treeNode, int cnt) {
+            this.treeNode = treeNode;
             this.cnt = cnt;
         }
 
-        public void setNode(Node node) {
-            this.node = node;
+        public void setNode(TreeNode treeNode) {
+            this.treeNode = treeNode;
         }
 
         public void setCount(int count) {
             this.cnt = count;
         }
 
-        public Node getNode() {
-            return this.node;
+        public TreeNode getNode() {
+            return this.treeNode;
         }
 
         public int getCount() {

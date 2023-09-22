@@ -9,7 +9,7 @@ public class DiameterOfBT_LC543 {
         //  4   5 7   8
         //     /     / \
         //     6    9  10
-        Node root = DFS_Traversal.getTree();
+        TreeNode root = DFS_Traversal.getTree();
         // this will not work bcz it is creating new integer and trying to reassign it inside the method
         // which will not affect the old reference, hence we won't find any changes
 //        Integer num = 5;  // Create an Integer object with value 5
@@ -26,7 +26,7 @@ public class DiameterOfBT_LC543 {
         System.out.println(diameter[0]);
     }
 
-    private static int getDiameterOfTree(Node root, int[] diameter) {
+    private static int getDiameterOfTree(TreeNode root, int[] diameter) {
         if (root == null) return 0;
         int lh = getDiameterOfTree(root.left, diameter);
         int rh = getDiameterOfTree(root.right, diameter);
