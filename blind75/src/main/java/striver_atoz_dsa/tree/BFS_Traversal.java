@@ -5,13 +5,13 @@ import java.util.Queue;
 
 public class BFS_Traversal {
     public static void main(String[] args) {
-        Node root = DFS_Traversal.getTree();
+        TreeNode root = DFS_Traversal.getTree();
 
         printBFSTraversal(root);
     }
 
-    private static void printBFSTraversal(Node root) {
-        Queue<Node> queue = new LinkedList<>();
+    private static void printBFSTraversal(TreeNode root) {
+        Queue<TreeNode> queue = new LinkedList<>();
 
         if (root == null)
             return;
@@ -19,14 +19,14 @@ public class BFS_Traversal {
         queue.add(root);
 
         while (!queue.isEmpty()) {
-            Node currentNode = queue.poll();
-            System.out.print(currentNode.data+" ");
+            TreeNode currentTreeNode = queue.poll();
+            System.out.print(currentTreeNode.val +" ");
 
-            if (currentNode.left != null)
-                queue.add(currentNode.left);
+            if (currentTreeNode.left != null)
+                queue.add(currentTreeNode.left);
 
-            if (currentNode.right != null)
-                queue.add(currentNode.right);
+            if (currentTreeNode.right != null)
+                queue.add(currentTreeNode.right);
         }
 
     }

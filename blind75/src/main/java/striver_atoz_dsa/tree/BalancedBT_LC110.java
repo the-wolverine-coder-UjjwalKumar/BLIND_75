@@ -9,7 +9,7 @@ public class BalancedBT_LC110 {
         //  4   5 7   8
         //     /     / \
         //     6    9  10
-        Node root = DFS_Traversal.getTree();
+        TreeNode root = DFS_Traversal.getTree();
 
         int balancedTree = checkIfBalanced(root);
         if (balancedTree!=-1)
@@ -18,7 +18,7 @@ public class BalancedBT_LC110 {
             System.out.println("false");
     }
 
-    private static int checkIfBalanced(Node root) {
+    private static int checkIfBalanced(TreeNode root) {
         if (root == null) return  0;
 
         int leftH = checkIfBalanced(root.left);
