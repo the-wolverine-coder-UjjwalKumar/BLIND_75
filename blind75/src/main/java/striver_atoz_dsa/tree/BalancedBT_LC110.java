@@ -1,5 +1,7 @@
 package striver_atoz_dsa.tree;
 
+import striver_atoz_dsa.tree.traversal.DFS_Traversal;
+
 public class BalancedBT_LC110 {
     public static void main(String[] args) {
         //       1

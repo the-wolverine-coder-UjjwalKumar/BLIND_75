@@ -1,4 +1,6 @@
-package striver_atoz_dsa.tree;
+package striver_atoz_dsa.tree.traversal;
+
+import striver_atoz_dsa.tree.TreeNode;
 
 import java.util.LinkedList;
 import java.util.List;
