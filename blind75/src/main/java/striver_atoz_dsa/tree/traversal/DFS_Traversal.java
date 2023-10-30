@@ -78,7 +78,7 @@ public class DFS_Traversal {
         System.out.print(root.val + " ");
     }
 
-    private static void printInOrder(TreeNode root) {
+    public static void printInOrder(TreeNode root) {
         if (root == null)
             return;
 
