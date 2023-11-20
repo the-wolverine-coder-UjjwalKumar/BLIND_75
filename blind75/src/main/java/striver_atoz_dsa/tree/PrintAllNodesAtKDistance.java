@@ -80,7 +80,7 @@ public class PrintAllNodesAtKDistance {
 
     }
 
-    private static TreeNode getNodeRef(TreeNode root, int target) {
+    public static TreeNode getNodeRef(TreeNode root, int target) {
         //       1
         //      / \
         //    2     3
@@ -105,7 +105,7 @@ public class PrintAllNodesAtKDistance {
         return node;
     }
 
-    private static void makeParentTrack(TreeNode root, Map<TreeNode, TreeNode> parentInfo) {
+    public static void makeParentTrack(TreeNode root, Map<TreeNode, TreeNode> parentInfo) {
         Queue<TreeNode> queue = new LinkedList<>();
         queue.offer(root);
 
