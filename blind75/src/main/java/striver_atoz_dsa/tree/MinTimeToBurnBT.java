@@ -1,6 +1,5 @@
 package striver_atoz_dsa.tree;
 
-import com.sun.source.tree.Tree;
 import striver_atoz_dsa.tree.traversal.DFS_Traversal;
 
 import java.util.*;
