@@ -113,5 +113,11 @@ public class DisjointSetUnion {
         public boolean inSameSet(int u, int v) {
             return findP(u) == findP(v);
         }
+
+        public void reset(int p) {
+            parent[p] = p;
+            rank[p] = 0;
+            size[p] = 1;
+        }
      }
 }
