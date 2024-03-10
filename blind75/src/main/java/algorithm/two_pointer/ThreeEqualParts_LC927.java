@@ -50,6 +50,8 @@ public class ThreeEqualParts_LC927 {
 //                return ans;
 //            }
 //        }
+//        return new int[] {indexOf1InPart0-1, indexOf1InPart1};
+
 
         for (; indexOf1InPart2 < arr.length
                 && arr[indexOf1InPart0] == arr[indexOf1InPart1]
@@ -58,6 +60,5 @@ public class ThreeEqualParts_LC927 {
 
         return indexOf1InPart2 == arr.length ? new int[]{indexOf1InPart0-1, indexOf1InPart1} : new int[] {-1,-1};
 
-//        return new int[] {indexOf1InPart0-1, indexOf1InPart1};
     }
 }
