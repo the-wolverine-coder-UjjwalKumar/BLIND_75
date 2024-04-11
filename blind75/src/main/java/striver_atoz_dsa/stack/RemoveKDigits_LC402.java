@@ -1,4 +1,4 @@
-package algorithm.slidingwindow.fixed;
+package striver_atoz_dsa.stack;
 
 import java.util.Stack;
 
