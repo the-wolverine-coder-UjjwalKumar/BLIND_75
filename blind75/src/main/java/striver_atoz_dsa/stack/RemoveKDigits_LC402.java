@@ -18,45 +18,6 @@ public class RemoveKDigits_LC402 {
     }
 
     public static String removeKdigits1(String num, int k) {
-
-        if (num.length() <= k) return "0";
-
-        int ans = Integer.MAX_VALUE;
-        int i = 0;
-        int j = 0;
-
-        while (j<num.length()) {
-            if (j-i+1 == k) {
-                // 0 ...i ... j....
-                String temp = num.substring(0, i) + num.substring(i+k);
-
-                ans = Integer.min(ans, Integer.parseInt(temp));
-                i++;
-
-            }
-            j++;
-        }
-
-        return String.valueOf(ans);
-    }
-
-    private static String removeKdigits11(String num, int k) {
-        while (k > 0) {
-            int n = num.length();
-            int i = 0;
-            while (i+1<n && num.charAt(i)<=num.charAt(i+1))  i++;
-            num = num.substring(0, i) + num.substring(i+1);
-            k--;
-        }
-        // trim leading zeros
-        int s = 0;
-        while (s<num.length()-1 && num.charAt(s)=='0')  s++;
-        num = num.substring(s);
-
-        return num == "" ? "0" : num;
-    }
-
-    public static String removeKdigits(String num, int k) {
         int len = num.length();
         if(k == 0)  return num;
         if(k == len) return "0";
@@ -81,5 +42,41 @@ public class RemoveKDigits_LC402 {
             smallest = smallest.substring(1);
 
         return smallest;
+    }
+
+    public static String removeKdigits(String num, int k) {
+
+        int len = num.length();
+        if (k == len){
+            return "0";
+        }
+
+        Stack<Character> stack = new Stack<>();
+        int i = 0;
+        while (i < num.length()) {
+            while (k > 0 && !stack.isEmpty() && stack.peek() > num.charAt(i)) {
+                stack.pop();
+                k--;
+            }
+            stack.push(num.charAt(i));
+            i++;
+        }
+
+        while (k > 0) {
+            stack.pop();
+            k--;
+        }
+
+        StringBuilder sb = new StringBuilder();
+        while (!stack.isEmpty()) {
+            sb.append(stack.pop());
+        }
+        sb.reverse();
+
+        while (sb.length() > 1 && sb.charAt(0) == '0') {
+            sb.deleteCharAt(0);
+        }
+
+        return sb.toString();
     }
 }
