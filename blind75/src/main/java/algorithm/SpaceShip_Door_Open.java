@@ -1,4 +1,4 @@
-package striver_atoz_dsa.array;
+package algorithm;
 
 import java.util.Arrays;
 
