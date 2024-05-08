@@ -1,19 +1,11 @@
 package striver_atoz_dsa.array.medium;
 
-import java.util.List;
+import striver_atoz_dsa.linkedlist.ListNode;
+
 import java.util.Stack;
 
 public class ReorderLinkedList_LC143 {
-    static class ListNode {
-        int val;
-        ListNode next;
 
-        public ListNode(int val) {
-            this.val = val;
-            this.next = null;
-        }
-
-    }
     public static void main(String[] args) {
         ListNode head = new ListNode(1);
         int i = 2;
@@ -102,7 +94,7 @@ public class ReorderLinkedList_LC143 {
         return reverse(newHead, head);
     }
 
-    private static void printList(ListNode head) {
+    public static void printList(ListNode head) {
         ListNode cur= head;
         while (cur!=null) {
             System.out.print(cur.val+" ");
